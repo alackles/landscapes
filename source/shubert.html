@@ -41,7 +41,7 @@
       <!-- Left Controller -->
       <a-entity 
       id="leftHand" 
-      hand-controls="hand: left; handModelStyle: lowPoly; color: #15ACCF" 
+      oculus-touch-controls ="hand: left; handModelStyle: lowPoly; color: #15ACCF" 
       teleport-controls="cameraRig: #cameraRig; teleportOrigin: #head; button: trigger; collisionEntities: .data_point; curveShootingSpeed: 18; landingMaxAngle: 60" 
       visible="true">
       </a-entity>
@@ -49,7 +49,7 @@
       <!-- Right Controller -->
       <a-entity 
       id="rightHand" 
-      hand-controls="hand: right; handModelStyle: lowPoly; color: #15ACCF" 
+      oculus-touch-controls ="hand: right; handModelStyle: lowPoly; color: #15ACCF" 
       laser-controls raycaster="showLine: true; far: 10; interval: 0; objects: .clickable, a-link;" 
       line="color: #7cfc00; opacity: 0.5" 
       visible="true">
