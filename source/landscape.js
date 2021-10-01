@@ -43,7 +43,6 @@ var load_landscape = function(filename) {
             .attr('color', function(d) {return colScale(d.fitness)})
             .attr('position', function(d) {return coords(d.x, d.y, d.z)})
             .attr('radius', 1)
-            .attr('opacity', 0.9);
         }
     )
 
