@@ -2,26 +2,22 @@
 
 <head>
   <title>Shubert Landscape</title>
-  <script src="https://aframe.io/releases/0.5.0/aframe.min.js"></script>
+  <!-- aframe and aframe components-->
+  <script src="https://aframe.io/releases/1.0.4/aframe.min.js"></script>
   <script src="https://cdn.jsdelivr.net/gh/donmccurdy/aframe-extras@v6.1.1/dist/aframe-extras.min.js"></script>
+  <script src="https://raw.githack.com/andreasplesch/aframe-meshline-component/master/dist/aframe-meshline-component.min.js"></script>
+  
+  <!-- camera/movement controls -->
   <script src="https://rawgit.com/fernandojsg/aframe-teleport-controls/master/dist/aframe-teleport-controls.min.js"></script>
   <script src="https://unpkg.com/aframe-thumb-controls-component@1.1.0/dist/aframe-thumb-controls-component.min.js"></script>
+  
+  <!-- jquery -->
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 </head>
 
 <body>
-  <a-scene>
+  <a-scene fog="type: linear; color: #FFF; far: 50; near: 0">
 
-    <!-- nav-mesh: protecting us from running thru things  -->
-    <!-- commented out until we get a navmesh going (or never?)
-    <a-entity 
-      id="navmesh-Hello" 
-      gltf-model="assets/gltf/AdvHelloWorldnavmesh.gltf" 
-      visible="false" 
-      nav-mesh="">
-    </a-entity> 
-    -->
-      
     <!-- Basic movement and teleportation  -->
     <a-entity 
       id="cameraRig" 
@@ -41,7 +37,7 @@
       <!-- Left Controller -->
       <a-entity 
       id="leftHand" 
-      oculus-touch-controls ="hand: left; handModelStyle: lowPoly; color: #15ACCF" 
+      hand-controls="hand: left; handModelStyle: lowPoly; color: #15ACCF" 
       teleport-controls="cameraRig: #cameraRig; teleportOrigin: #head; button: trigger; collisionEntities: .data_point; curveShootingSpeed: 18; landingMaxAngle: 60" 
       visible="true">
       </a-entity>
@@ -49,13 +45,14 @@
       <!-- Right Controller -->
       <a-entity 
       id="rightHand" 
-      oculus-touch-controls ="hand: right; handModelStyle: lowPoly; color: #15ACCF" 
+      hand-controls="hand: right; handModelStyle: lowPoly; color: #15ACCF" 
       laser-controls raycaster="showLine: true; far: 10; interval: 0; objects: .clickable, a-link;" 
       line="color: #7cfc00; opacity: 0.5" 
       visible="true">
       </a-entity>
-    
+      
     </a-entity>
+
 
   </a-scene>
   <script src="https://d3js.org/d3.v7.min.js"></script>
