@@ -28,11 +28,11 @@ var load_landscape = function(filename1, filename2, filename3) {
         lod = files[1]
         edges = files[2]
 
-        var pts = scene.selectAll('a-sphere')
+        var pts = scene.selectAll('data_point')
             .data(landscape, function(d){return d.x})
         
         
-        var nodes = scene.selectAll('a-box')
+        var nodes = scene.selectAll('phylo_node')
             .data(lod, function(d){return d.id})
         
 
@@ -51,12 +51,11 @@ var load_landscape = function(filename1, filename2, filename3) {
         phyloScale.domain([0, 10000])
         
         pts.enter()
-            .append('a-sphere')
+            .append('a-box')
             .attr('class', 'data_point')
             .attr('color', function(d) {return colScale(d.fitness)})
             .attr('position', function(d) {return coords(d.x, d.y, d.z)})
-            .attr('radius', 1)
-            .attr('opacity', 0.9);
+            .attr('opacity', 1);
         
         nodes.enter()
             .append('a-box')
