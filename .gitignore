@@ -1,0 +1,4 @@
+#data
+data/reps/*/phylogeny*.csv
+data/reps/*/output.csv
+data/reps/*/genome.csv

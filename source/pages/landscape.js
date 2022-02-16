@@ -1,6 +1,10 @@
+<<<<<<< HEAD
 // TODO: Vincent cmaera rig should be 25 25 25 
 
 var accessor_3D = function(row) {
+=======
+var accessor = function(row) {
+>>>>>>> 42b15601e7664a8428fecbb2642610ca48a5bb2c
     return {
         x: +row.x*10,
         y: +row.y*10,
@@ -10,6 +14,7 @@ var accessor_3D = function(row) {
     }
 }
 
+<<<<<<< HEAD
 var accessor_2D = function(row) {
   return {
       x: +row.x*10,
@@ -20,11 +25,14 @@ var accessor_2D = function(row) {
   }
 }
 
+=======
+>>>>>>> 42b15601e7664a8428fecbb2642610ca48a5bb2c
 
 var coords = function(x, y, z) {
     return x + " " + y + " " + z
 }
 
+<<<<<<< HEAD
 var reload = function() {
     // Remove default text if it's there 
     var defaultText = document.getElementById('defaultText');
@@ -83,6 +91,16 @@ var load_landscape = function() {
         d3_coord_data,
         d3_node_data,
         d3_edge_data
+=======
+var load_landscape = function(filename1, filename2, filename3) {
+
+    var scene = d3.select('a-scene')
+
+    Promise.all([
+        d3.csv(filename1, accessor),
+        d3.csv(filename2, accessor),
+        d3.text(filename3)
+>>>>>>> 42b15601e7664a8428fecbb2642610ca48a5bb2c
     ])
     .then(
         function(files) {
@@ -90,6 +108,7 @@ var load_landscape = function() {
         lod = files[1]
         edges = files[2]
 
+<<<<<<< HEAD
         const meshline_param = 'lineWidth: 20; path: ' + edges + '; color: #000'
         
         var pts = scene.selectAll('a-sphere')
@@ -103,6 +122,20 @@ var load_landscape = function() {
             .attr('id', "phyloLine")
             .attr('meshline', meshline_param)
         }
+=======
+        var pts = scene.selectAll('data_point')
+            .data(landscape, function(d){return d.x})
+        
+        
+        var nodes = scene.selectAll('phylo_node')
+            .data(lod, function(d){return d.id})
+        
+
+        const meshline_param = 'linewidth: 20; path: ' + edges + '; color: #000'
+
+        var lod = scene.append('a-entity')
+            .attr('meshline', meshline_param)
+>>>>>>> 42b15601e7664a8428fecbb2642610ca48a5bb2c
 
         var min = d3.min(landscape, function(d) {return d.fitness});
         var max = d3.max(landscape, function(d) {return d.fitness});
@@ -114,6 +147,7 @@ var load_landscape = function() {
         phyloScale.domain([0, 10000])
         
         pts.enter()
+<<<<<<< HEAD
             .append('a-sphere')
             .attr('class', 'data_point')
             .attr('color', function(d) {return colScale(d.fitness)})
@@ -122,20 +156,38 @@ var load_landscape = function() {
             .attr('opacity', 0.9);
         
          nodes.enter()
+=======
+            .append('a-box')
+            .attr('class', 'data_point')
+            .attr('color', function(d) {return colScale(d.fitness)})
+            .attr('position', function(d) {return coords(d.x, d.y, d.z)})
+            .attr('opacity', 1);
+        
+        nodes.enter()
+>>>>>>> 42b15601e7664a8428fecbb2642610ca48a5bb2c
             .append('a-box')
             .attr('class', 'phylo_node')
             .attr('color', function (d) {return phyloScale(d.id)})
             .attr('position', function(d) {return coords(d.x, d.y, d.z)})
             .attr('height', 0.2)
             .attr('depth', 0.2)
+<<<<<<< HEAD
             .attr('width', 0.2) 
+=======
+            .attr('width', 0.2)
+>>>>>>> 42b15601e7664a8428fecbb2642610ca48a5bb2c
         
         }
     )
 
 }
 
+<<<<<<< HEAD
 var draw = function() {
   reload();
   load_landscape();
 }
+=======
+
+
+>>>>>>> 42b15601e7664a8428fecbb2642610ca48a5bb2c
